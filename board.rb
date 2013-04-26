@@ -9,15 +9,37 @@ class Board
 	end
 
 	def fill_board
-    	@grid[3][0] = Piece.new([3, 0])
-    	@grid[3][1] = Piece.new([3, 1])
-    	@grid[3][2] = Piece.new([3, 2])
-    	@grid[2][0] = Piece.new([2, 0])
-    	@grid[2][1] = Piece.new([2, 1])
-    	@grid[2][2] = Piece.new([2, 2])
+		#player 1
+		@grid[0][1] = Piece.new([0, 1])
+    	@grid[0][3] = Piece.new([0, 3])
+    	@grid[0][5] = Piece.new([0, 5])
+    	@grid[0][7] = Piece.new([0, 7])
+    	
+    	@grid[1][0] = Piece.new([1, 0])
+    	@grid[1][2] = Piece.new([1, 2])
+    	@grid[1][4] = Piece.new([1, 4])
+    	@grid[1][6] = Piece.new([1, 6])
+
+		@grid[2][1] = Piece.new([2, 1])
     	@grid[2][3] = Piece.new([2, 3])
-    	@grid[3][3] = Piece.new([3, 3])
-    	@grid[7][0] = Piece.new([7, 0])
+    	@grid[2][5] = Piece.new([2, 5])
+    	@grid[2][7] = Piece.new([2, 7])
+
+    	#player 1
+    	@grid[7][1] = Piece.new([7, 1])
+    	@grid[7][3] = Piece.new([7, 3])
+    	@grid[7][5] = Piece.new([7, 5])
+    	@grid[7][7] = Piece.new([7, 7])
+    	
+    	@grid[6][0] = Piece.new([6, 0])
+    	@grid[6][2] = Piece.new([6, 2])
+    	@grid[6][4] = Piece.new([6, 4])
+    	@grid[6][6] = Piece.new([6, 6])
+
+		@grid[5][1] = Piece.new([5, 1])
+    	@grid[5][3] = Piece.new([5, 3])
+    	@grid[5][5] = Piece.new([5, 5])
+    	@grid[5][7] = Piece.new([5, 7])
   	end
 
 	def display
