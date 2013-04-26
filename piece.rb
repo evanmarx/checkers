@@ -6,6 +6,27 @@ class Piece
 		@location = location #array of [y, x]
 		@location[0] > 4  ? @player_id = "White" : @player_id = "Black"
 		@king = false
+		@slide_directions = slide_directions
+		@jump_directions = jump_directions
+	end
+
+	def slide_directions
+		#check spot for empty
+		if @player_id == "White"
+			[[-1,-1],[-1,+1]]
+		elsif @player_id == "Black"
+			[[1,-1],[1,+1]]
+		end
+	end
+
+	def jump_directions
+		#check first spot for enemy
+		#check second spot for empty
+		if @player_id == "White"
+			[[[-1,-1],[-2,-2]],[[-1,+1],[-2,+2]]]
+		elsif @player_id == "Black"
+			[[[1,-1],[2,-2]],[[-1,+1],[2,+2]]]
+		end
 	end
 
 	def dup_piece
@@ -83,6 +104,13 @@ class Piece
 		#takes in the current board
 		#returns an array of available slide moves
 		#assumes no kings for now!
+		possible_moves = @slide_directions.map do |dir|
+			[start[0] + dir[0], start[1] + dir[1]]
+		end
+
+		possible_moves.select do |move|
+			true if board.grid[move[0]],[move[1]].nil?
+		end
 	end
 
 	def jump_moves(board)
