@@ -1,4 +1,4 @@
-
+require 'debugger'
 
 class Piece
 	attr_accessor :location, :player_id, :king
@@ -81,7 +81,7 @@ class Piece
 		## is operating on the changed board
 		## if any move cannot occur (invalid) - an error should be raised
 		move_seq.each_index do |i|
-			next if i == move_seq.size
+			next if i == move_seq.size-1
 			#determine if move is #jump or #slide, let's assume slide for now!
 			move = [move_seq[i],move_seq[i+1]] # [start,end]
 			perform_slide(move, board) # or jump, depending on case!

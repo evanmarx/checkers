@@ -1,6 +1,7 @@
 load 'piece.rb'
 load 'error.rb'
 
+
 class Board
 	attr_accessor :grid
 
@@ -26,6 +27,18 @@ class Board
 		end
 	end
 
+	def dup
+		new_board = Board.new
+		new_board.grid = Array.new(8) { Array.new(8) {nil} }
+
+		@grid.each_with_index do |row, y|
+			row.each_index do |x|
+				next if @grid[y][x].nil?
+				new_board.grid[y][x] = @grid[y][x].dup_piece
+			end
+		end
+		new_board
+	end
 
 end #end Board class
 
