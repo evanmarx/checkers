@@ -7,18 +7,32 @@ class Player
 	end
 
 	def move
-		puts "Please enter a starting piece, and the places you would like to move it."
-		puts "For multiple moves, enter each space it will land in the sequence."
-		puts "E.g. Single move: '[0,0],[1,1]'"
-		puts "E.g. Jump move: '[0,0],[2,2],[4,4]'"
-		move = gets.chomp #need to request/[0,0],[1,1]parse this better!
+		move_seq = []
+		puts "Please enter a starting piece's x-y coordinates, separated by a comma (e.g. '0,0')"
+		move = gets.chomp
+		move_seq << parse_input(move)
+		
+		puts 
+		puts "Enter the spaces you want to move your piece."
+		puts "Hit 'Enter' after every move you want to make"
+		puts "When you are finished moving, hit 'Enter' on a blank line." 
+		loop
+			move = gets.chomp
+			break if move == ""
+			move_seq << parse_input(move)
+		end
+		move_seq
 	end
 
 	def try_again
-		puts "That wasn't a valid move!"
-		puts "Please enter a starting piece, and the places you would like to move it."
-		puts "For multiple moves, enter each space it will land in the sequence."
-		move = gets.chomp #need to request/[0,0],[1,1]parse this better!
+		puts "That wasn't a valid move! Please try again"
+		self.move
+	end
+
+	def parse_input(move)
+		move = move.split(",")
+		move.map! { |coord| coord.to_i }
+		[move[1],move[0]]
 	end
 
 end
