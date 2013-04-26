@@ -27,7 +27,7 @@ class Piece
 		if @player_id == "White"
 			[[[-1,-1],[-2,-2]],[[-1,+1],[-2,+2]]]
 		elsif @player_id == "Black"
-			[[[1,-1],[2,-2]],[[-1,+1],[2,+2]]]
+			[[[1,-1],[2,-2]],[[1,+1],[2,+2]]]
 		end
 	end
 
@@ -113,26 +113,29 @@ class Piece
 		end
 
 		possible_moves.select do |move|
-			true if board.grid[move[0]][move[1]].nil? && (move6[0].between?(0,7) && move[1].between?(0,7))
+			true if board.grid[move[0]][move[1]].nil? && (move[0].between?(0,7) && move[1].between?(0,7))
 		end
 	end
 
 	def perform_jump(move, board)
 		available_moves = jump_moves(move[0], board)
+		moved = false
 
 		available_moves.each do |pair|
 			if pair[1] == move[1]
 				board.grid[move[1][0]][move[1][1]] = board.grid[move[0][0]][move[0][1]] 
 				board.grid[move[0][0]][move[0][1]] = nil
 				self.location = [move[1][0], move[1][1]]
+				# marker for turning off error switch
+				moved = true
 				# delete guy at pair[0] --> abstract kill sequence
 				board.grid[pair[0][0]][pair[0][1]].alive = false
 				board.grid[pair[0][0]][pair[0][1]].location = nil
 				board.grid[pair[0][0]][pair[0][1]] = nil
-			else
-				raise InvalidMoveError.new "Cannot make this slide move!"
 			end
 		end
+
+		raise InvalidMoveError.new "Cannot make this jump move!" if moved == false
 	end
 
 
