@@ -12,6 +12,11 @@ class Board
     	@grid[3][0] = Piece.new([3, 0])
     	@grid[3][1] = Piece.new([3, 1])
     	@grid[3][2] = Piece.new([3, 2])
+    	@grid[2][0] = Piece.new([2, 0])
+    	@grid[2][1] = Piece.new([2, 1])
+    	@grid[2][2] = Piece.new([2, 2])
+    	@grid[2][3] = Piece.new([2, 3])
+    	@grid[3][3] = Piece.new([3, 3])
     	@grid[7][0] = Piece.new([7, 0])
   	end
 

@@ -9,6 +9,7 @@ class Player
 	def move
 		move_seq = []
 		puts 
+		puts
 		puts "#{@name}, please enter a starting piece's x-y coordinates, separated by a comma (e.g. '0,0')"
 		move = gets.chomp
 		move_seq << parse_input(move)

@@ -24,13 +24,11 @@ class Game
 			until valid_move?(new_move)
 				new_move = @current_player.try_again
 			end
-
-
-		end #win? loop
-
+		end 
+		puts ""
 		puts "#{@current_player.name} wins the game!"
-	end #end game_loop
-
+		puts "Better luck next time, #{@enemy_player.name}."
+	end 
 
 	def win?
 		# true on either means win for current player, return true. False otherwise
@@ -45,8 +43,9 @@ class Game
 		return false if move.size < 2
 		return false if @board.grid[move[0][0]][move[0][1]].player_id != @current_player.player_id
 		# the next condition will execute the move if it is valid.
-		return false if @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board) == []
+		return false if @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board) == [] || @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board) == nil
 		# move will have been made if the last condition returned as non-empty
+		# it equals false or nil but this is just a patch until I refactor the perform_moves method
 		true
 	end
 
