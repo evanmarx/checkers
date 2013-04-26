@@ -38,7 +38,7 @@ class Piece
 	end
 
 	def render
-		"C|"
+		player_id == "White" ? "W|" : "B|"
 	end
 
 	def perform_moves(move_seq, board)
@@ -49,7 +49,7 @@ class Piece
 		if valid
 			perform_moves!(move_seq, board)
 		else
-			puts "Not valid move" #raise/return the error exception
+			[]
 		end
 	end
 

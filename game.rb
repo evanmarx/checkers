@@ -43,9 +43,8 @@ class Game
 		return false if move.size < 2
 		return false if @board.grid[move[0][0]][move[0][1]].player_id != @current_player.player_id
 		# the next condition will execute the move if it is valid.
-		return false if @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board) == [] || @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board) == nil
+		return false if @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board) == [] 
 		# move will have been made if the last condition returned as non-empty
-		# it equals false or nil but this is just a patch until I refactor the perform_moves method
 		true
 	end
 
