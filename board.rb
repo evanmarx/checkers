@@ -12,6 +12,7 @@ class Board
 
 	def fill_board
     	@grid[0][0] = Piece.new([0, 0])
+    	@grid[7][0] = Piece.new([7, 0])
   	end
 
 	def display

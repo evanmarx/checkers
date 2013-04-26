@@ -111,10 +111,10 @@ class Piece
 		end
 
 		possible_moves.select do |move|
-			true if board.grid[move[0]][move[1]].nil?
+			true if board.grid[move[0]][move[1]].nil? && (move[0].between?(0,7) && move[1].between?(0,7))
 		end
 
-		#need to take into account off board moves!!!
+		
 
 	end
 
