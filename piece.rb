@@ -81,11 +81,18 @@ class Piece
 		## those methods should change the board state so that the next move in the sequence
 		## is operating on the changed board
 		## if any move cannot occur (invalid) - an error should be raised
+
+		if move_seq.size == 2 && (move_seq[0][0] - move_seq[1][0]).abs == 1
+			move_type = Proc.new {|m| perform_slide(m, board)}
+		else
+			move_type = Proc.new {|m| perform_jump(m, board)}
+		end
+			
+
 		move_seq.each_index do |i|
 			next if i == move_seq.size-1
-			#determine if move is #jump or #slide, let's assume slide for now!
 			move = [move_seq[i],move_seq[i+1]] # [start,end]
-			perform_slide(move, board) # or jump, depending on case!
+			move_type.call(move, board) 
 		end
 	end
 
