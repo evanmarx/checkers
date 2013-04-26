@@ -1,0 +1,46 @@
+#Game Class
+
+	# init
+	#	create 2 player objects
+	#   create board object
+	#   set current_player variable => set to player 2
+	#	run game_loop
+
+	# game_loop
+	#   loop until win?
+	##		switch current_player var
+	##		display_board => call to board to display itself
+	##		get new_move => call to current_player object for input
+	##		move validation_loop
+	##			until move_valid(new_movew) ==> call to piece class(board object) for validity
+	###				get move again call to current_player object for input
+	##
+	##		update_board(new move) => call to board class with new move 
+	#	end loop
+
+
+	# win?
+	# 	check if other player (non-current) has lost 
+	##		pieces_left? => call board object to check remaining pieces (if 0 then lose)
+	##		moves_remaining? => call board object to check remaining moves (if 0 then lose)
+	##	else no one has won
+#end Game class
+
+
+#Board Class
+
+	#init
+	#	create an 8x8 grid
+	#	fill_board with piece objects (initial locations determine player_id)
+	
+
+	#display_board
+	#	displays the board to the screen with all pieces on
+
+
+	#update_board(move)
+	#	takes in a valid move and changes the objects on the board after a valid move
+	
+	#check_remaining_moves(player_id)
+	#	iterates through remaining pieces to check if there are any moves left for a player
+#end Board Class
