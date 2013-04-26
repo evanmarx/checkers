@@ -1,7 +1,7 @@
 require 'debugger'
 
 class Piece
-	attr_accessor :location, :player_id, :king
+	attr_accessor :location, :player_id, :king, :alive
 
 	def initialize(location)
 		@location = location #array of [y, x]
@@ -9,6 +9,7 @@ class Piece
 		@king = false
 		@slide_directions = slide_directions
 		@jump_directions = jump_directions
+		@alive = true
 	end
 
 	def slide_directions
@@ -112,14 +113,44 @@ class Piece
 		end
 
 		possible_moves.select do |move|
-			true if board.grid[move[0]][move[1]].nil? && (move[0].between?(0,7) && move[1].between?(0,7))
+			true if board.grid[move[0]][move[1]].nil? && (move6[0].between?(0,7) && move[1].between?(0,7))
 		end
 	end
 
-	def jump_moves(board)
-		#takes in the current board
+	def perform_jump(move, board)
+		available_moves = jump_moves(move[0], board)
+
+		available_moves.each do |pair|
+			if pair[1] == move[1]
+				board.grid[move[1][0]][move[1][1]] = board.grid[move[0][0]][move[0][1]] 
+				board.grid[move[0][0]][move[0][1]] = nil
+				self.location = [move[1][0], move[1][1]]
+				# delete guy at pair[0] --> abstract kill sequence
+				board.grid[pair[0][0]][pair[0][1]].alive = false
+				board.grid[pair[0][0]][pair[0][1]].location = nil
+				board.grid[pair[0][0]][pair[0][1]] = nil
+			else
+				raise InvalidMoveError.new "Cannot make this slide move!"
+			end
+		end
+	end
+
+
+	def jump_moves(start, board)
+		#takes in the current board, and a start position
 		#returns an array of available jump moves
 		#assumes no kings for now!
+		possible_moves = @jump_directions.map do |jump|
+			[[start[0] + jump[0][0], start[1] + jump[0][1]],[start[0] + jump[1][0], start[1] + jump[1][1]]]
+		end
+
+		possible_moves.select do |move|
+			if not board.grid[move[0][0]][move[0][1]].nil? 
+				if (board.grid[move[0][0]][move[0][1]].player_id != self.player_id) && (board.grid[move[1][0]][move[1][1]].nil?) && (move[1][0].between?(0,7) && move[1][1].between?(0,7))
+					true
+				end
+			end
+		end
 	end
 
 	
