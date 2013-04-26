@@ -39,8 +39,19 @@ class Board
 		new_board
 	end
 
-	def check_remaining_moves(player_id)
-		
+	def no_remaining_pieces?(enemy_player_id)
+		all_remaining = @grid.flatten(2).compact
+		all_remaining.none? do |piece|
+			piece.player_id == enemy_player_id
+		end
+	end
+
+	def no_remaining_moves?(enemy_player_id)
+		all_remaining = @grid.flatten(2).compact
+		all_remaining.none? do |piece| 
+			next if piece.player_id != enemy_player_id
+			@grid[piece.location[0]][piece.location[1]].slide_moves([piece.location[0],[piece.location[1]], self).size != 0 || @grid[piece.location[0]][piece.location[1]].jump_moves([piece.location[0],[piece.location[1]], self).size != 0
+		end
 	end
 
 end #end Board class

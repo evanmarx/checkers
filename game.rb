@@ -26,9 +26,6 @@ class Game
 			end
 
 
-
-
-
 		end #win? loop
 
 		puts "#{@current_player.name} wins the game!"
@@ -37,14 +34,17 @@ class Game
 
 	def win?
 		# true on either means win for current player, return true. False otherwise
-		#check_remaining_pieces(@enemy_player.player_id)
-		#check_remaining_moves(@enemy_player.player_id)
+		return true if no_remaining_pieces?(@enemy_player.player_id)
+		return true if no_remaining_moves?(@enemy_player.player_id)
+		false
 	end
 
 	def valid_move?(move)
 		return false if move.size < 2
 		return false if @board.grid[move[0][0]][move[0][1]].player_id != @current_player.player_id
-		return false if @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board)
+		# the next condition will execute the move if it is valid.
+		return false if @board.grid[move[0][0]][move[0][1]].perform_moves(move, @board) == []
+		# move will have been made if the last condition returned as non-empty
 		true
 	end
 
