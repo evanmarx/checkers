@@ -97,6 +97,7 @@ class Piece
 		if available_moves.include?(move[1])
 			board.grid[move[1][0]][move[1][1]] = board.grid[move[0][0]][move[0][1]] 
 			board.grid[move[0][0]][move[0][1]] = nil
+			self.location = [move[1][0], move[1][1]]
 		else
 			raise InvalidMoveError.new "Cannot make this slide move!"
 		end
@@ -113,9 +114,6 @@ class Piece
 		possible_moves.select do |move|
 			true if board.grid[move[0]][move[1]].nil? && (move[0].between?(0,7) && move[1].between?(0,7))
 		end
-
-		
-
 	end
 
 	def jump_moves(board)
