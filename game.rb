@@ -2,7 +2,7 @@ load 'player.rb'
 load 'board.rb'
 load 'piece.rb'
 load 'error.rb'
-
+require "debugger"
 
 class Game
 	attr_accessor :board
@@ -34,12 +34,14 @@ class Game
 
 	def win?
 		# true on either means win for current player, return true. False otherwise
-		return true if no_remaining_pieces?(@enemy_player.player_id)
-		return true if no_remaining_moves?(@enemy_player.player_id)
+		return true if @board.no_remaining_pieces?(@enemy_player.player_id)
+		return true if @board.no_remaining_moves?(@enemy_player.player_id)
 		false
 	end
 
 	def valid_move?(move)
+		#debugger
+		return false if @board.grid[move[0][0]][move[0][1]].nil?
 		return false if move.size < 2
 		return false if @board.grid[move[0][0]][move[0][1]].player_id != @current_player.player_id
 		# the next condition will execute the move if it is valid.

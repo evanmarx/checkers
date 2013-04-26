@@ -8,7 +8,8 @@ class Player
 
 	def move
 		move_seq = []
-		puts "Please enter a starting piece's x-y coordinates, separated by a comma (e.g. '0,0')"
+		puts 
+		puts "#{@name}, please enter a starting piece's x-y coordinates, separated by a comma (e.g. '0,0')"
 		move = gets.chomp
 		move_seq << parse_input(move)
 		
@@ -16,7 +17,7 @@ class Player
 		puts "Enter the spaces you want to move your piece."
 		puts "Hit 'Enter' after every move you want to make"
 		puts "When you are finished moving, hit 'Enter' on a blank line." 
-		loop
+		while true
 			move = gets.chomp
 			break if move == ""
 			move_seq << parse_input(move)

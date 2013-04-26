@@ -9,7 +9,9 @@ class Board
 	end
 
 	def fill_board
-    	@grid[0][0] = Piece.new([0, 0])
+    	@grid[3][0] = Piece.new([3, 0])
+    	@grid[3][1] = Piece.new([3, 1])
+    	@grid[3][2] = Piece.new([3, 2])
     	@grid[7][0] = Piece.new([7, 0])
   	end
 
@@ -50,7 +52,7 @@ class Board
 		all_remaining = @grid.flatten(2).compact
 		all_remaining.none? do |piece| 
 			next if piece.player_id != enemy_player_id
-			@grid[piece.location[0]][piece.location[1]].slide_moves([piece.location[0],[piece.location[1]], self).size != 0 || @grid[piece.location[0]][piece.location[1]].jump_moves([piece.location[0],[piece.location[1]], self).size != 0
+			@grid[piece.location[0]][piece.location[1]].slide_moves([piece.location[0],piece.location[1]], self).size != 0 || @grid[piece.location[0]][piece.location[1]].jump_moves([piece.location[0],piece.location[1]], self).size != 0
 		end
 	end
 
