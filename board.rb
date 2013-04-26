@@ -1,5 +1,3 @@
-load 'piece.rb'
-load 'error.rb'
 
 
 class Board
@@ -39,6 +37,10 @@ class Board
 			end
 		end
 		new_board
+	end
+
+	def check_remaining_moves(player_id)
+		
 	end
 
 end #end Board class
