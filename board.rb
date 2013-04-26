@@ -25,7 +25,7 @@ class Board
     	@grid[2][5] = Piece.new([2, 5])
     	@grid[2][7] = Piece.new([2, 7])
 
-    	#player 1
+    	#player 2
     	@grid[7][0] = Piece.new([7, 0])
     	@grid[7][2] = Piece.new([7, 2])
     	@grid[7][4] = Piece.new([7, 4])
