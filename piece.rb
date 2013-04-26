@@ -1,4 +1,5 @@
 
+
 class Piece
 	attr_accessor :location, :player_id, :king
 
@@ -92,9 +93,10 @@ class Piece
 		#checks if it's valid with #slide_moves(start, board)
 		#if not valid, raise error!
 		#if valid, execute move!
-		available_moves = slide_moves(start, board)
-		if available_moves.include?(move)
-			#actually make move
+		available_moves = slide_moves(move[0], board)
+		if available_moves.include?(move[1])
+			board.grid[move[1][0]][move[1][1]] = board.grid[move[0][0]][move[0][1]] 
+			board.grid[move[0][0]][move[0][1]] = nil
 		else
 			raise InvalidMoveError.new "Cannot make this slide move!"
 		end
@@ -109,8 +111,11 @@ class Piece
 		end
 
 		possible_moves.select do |move|
-			true if board.grid[move[0]],[move[1]].nil?
+			true if board.grid[move[0]][move[1]].nil?
 		end
+
+		#need to take into account off board moves!!!
+
 	end
 
 	def jump_moves(board)

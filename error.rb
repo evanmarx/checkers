@@ -1,3 +1,3 @@
-class InvalidErrorMove < StandardError
+class InvalidMoveError < StandardError
 
 end
