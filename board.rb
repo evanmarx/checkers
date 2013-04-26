@@ -26,20 +26,20 @@ class Board
     	@grid[2][7] = Piece.new([2, 7])
 
     	#player 1
-    	@grid[7][1] = Piece.new([7, 1])
-    	@grid[7][3] = Piece.new([7, 3])
-    	@grid[7][5] = Piece.new([7, 5])
-    	@grid[7][7] = Piece.new([7, 7])
+    	@grid[7][0] = Piece.new([7, 0])
+    	@grid[7][2] = Piece.new([7, 2])
+    	@grid[7][4] = Piece.new([7, 4])
+    	@grid[7][6] = Piece.new([7, 6])
     	
-    	@grid[6][0] = Piece.new([6, 0])
-    	@grid[6][2] = Piece.new([6, 2])
-    	@grid[6][4] = Piece.new([6, 4])
-    	@grid[6][6] = Piece.new([6, 6])
+    	@grid[6][1] = Piece.new([6, 1])
+    	@grid[6][3] = Piece.new([6, 3])
+    	@grid[6][5] = Piece.new([6, 5])
+    	@grid[6][7] = Piece.new([6, 7])
 
-		@grid[5][1] = Piece.new([5, 1])
-    	@grid[5][3] = Piece.new([5, 3])
-    	@grid[5][5] = Piece.new([5, 5])
-    	@grid[5][7] = Piece.new([5, 7])
+		@grid[5][0] = Piece.new([5, 0])
+    	@grid[5][2] = Piece.new([5, 2])
+    	@grid[5][4] = Piece.new([5, 4])
+    	@grid[5][6] = Piece.new([5, 6])
   	end
 
 	def display

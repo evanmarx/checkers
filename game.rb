@@ -2,7 +2,6 @@ load 'player.rb'
 load 'board.rb'
 load 'piece.rb'
 load 'error.rb'
-require "debugger"
 
 class Game
 	attr_accessor :board
@@ -38,7 +37,6 @@ class Game
 	end
 
 	def valid_move?(move)
-		#debugger
 		return false if @board.grid[move[0][0]][move[0][1]].nil?
 		return false if move.size < 2
 		return false if @board.grid[move[0][0]][move[0][1]].player_id != @current_player.player_id

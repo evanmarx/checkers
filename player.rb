@@ -33,7 +33,7 @@ class Player
 
 	def parse_input(move)
 		move = move.split(",")
-		move.map! { |coord| coord.to_i }
+		move.map! { |coord| coord.to_i - 1}
 		[move[1],move[0]]
 	end
 
