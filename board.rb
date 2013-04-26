@@ -1,4 +1,5 @@
 load 'piece.rb'
+load 'error.rb'
 
 class Board
 	attr_accessor :grid

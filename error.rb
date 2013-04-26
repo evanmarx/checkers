@@ -1,0 +1,3 @@
+class InvalidErrorMove < StandardError
+
+end
