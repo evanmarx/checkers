@@ -1,4 +1,4 @@
-require 'debugger'
+# encoding: utf-8
 
 class Piece
 	attr_accessor :location, :player_id, :king, :alive

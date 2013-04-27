@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Player
 	attr_accessor :name, :player_id
 

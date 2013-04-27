@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 
 class Board
 	attr_accessor :grid

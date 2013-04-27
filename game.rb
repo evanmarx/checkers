@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 load 'player.rb'
 load 'board.rb'
 load 'piece.rb'
