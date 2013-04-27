@@ -1,3 +1,5 @@
+# REV: Don't think you want this on Github. Should put in .gitignore file methinks...
+
 #Game Class
 
 	# init

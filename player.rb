@@ -1,6 +1,8 @@
 class Player
 	attr_accessor :name, :player_id
-
+# REV: Noticed that there's not a grid to show what coordinates to use
+# REV: Also, the display doesn't come back up when an invalid move is entered.
+# REV: Personally, I can't get a piece to move.
 	def initialize(name, player_id)
 		@name = name
 		@player_id = player_id

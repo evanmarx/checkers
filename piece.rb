@@ -1,11 +1,12 @@
-require 'debugger'
+require 'debugger' # REV: should remove this before pushing to GitHub
 
 class Piece
 	attr_accessor :location, :player_id, :king, :alive
 
 	def initialize(location)
 		@location = location #array of [y, x]
-		@location[0] > 4  ? @player_id = "White" : @player_id = "Black"
+		@location[0] > 4  ? @player_id = "White" : @player_id = "Black" 
+    # REV: consider setting color in the fill_board method
 		@king = false
 		@slide_directions = slide_directions
 		@jump_directions = jump_directions
@@ -14,7 +15,7 @@ class Piece
 
 	def slide_directions
 		#check spot for empty
-		if @player_id == "White"
+		if @player_id == "White" # REV: why not use color instead of player_id?
 			[[-1,-1],[-1,+1]]
 		elsif @player_id == "Black"
 			[[1,-1],[1,+1]]
@@ -46,7 +47,7 @@ class Piece
 		#board is board object
 		valid = valid_move_seq?(move_seq, board)
 
-		if valid
+		if valid # REV: just move the valid_move_seq? method call here.
 			perform_moves!(move_seq, board)
 		else
 			[]
@@ -121,7 +122,8 @@ class Piece
 
 		possible_moves.select do |move|
 			true if board.grid[move[0]][move[1]].nil? && (move[0].between?(0,7) && move[1].between?(0,7))
-		end
+		# REV: The above line is 90ish chars. Try to keep them under 80.
+    end
 	end
 
 	def perform_jump(move, board)
@@ -157,7 +159,8 @@ class Piece
 		possible_moves.select do |move|
 			if not board.grid[move[0][0]][move[0][1]].nil? 
 				if (board.grid[move[0][0]][move[0][1]].player_id != self.player_id) && (board.grid[move[1][0]][move[1][1]].nil?) && (move[1][0].between?(0,7) && move[1][1].between?(0,7))
-					true
+					# REV: Holy crap that line is long.
+          true
 				end
 			end
 		end

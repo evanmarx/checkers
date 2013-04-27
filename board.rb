@@ -8,7 +8,7 @@ class Board
 		fill_board
 	end
 
-	def fill_board
+	def fill_board # REV: lots of repetition. Could run this with a loop.
 		#player 1
 		@grid[0][1] = Piece.new([0, 1])
     	@grid[0][3] = Piece.new([0, 3])
@@ -58,7 +58,7 @@ class Board
 	def dup
 		new_board = Board.new
 		new_board.grid = Array.new(8) { Array.new(8) {nil} }
-
+    # REV: Don't you already build a grid when new_board is initialized?
 		@grid.each_with_index do |row, y|
 			row.each_index do |x|
 				next if @grid[y][x].nil?
@@ -80,7 +80,8 @@ class Board
 		all_remaining.none? do |piece| 
 			next if piece.player_id != enemy_player_id
 			@grid[piece.location[0]][piece.location[1]].slide_moves([piece.location[0],piece.location[1]], self).size != 0 || @grid[piece.location[0]][piece.location[1]].jump_moves([piece.location[0],piece.location[1]], self).size != 0
-		end
+		# REV: 200ish lines is too long not to get a comment.
+    end
 	end
 
 end #end Board class

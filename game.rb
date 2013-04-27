@@ -2,7 +2,7 @@ load 'player.rb'
 load 'board.rb'
 load 'piece.rb'
 load 'error.rb'
-
+# REV: Just a note that you don't have a README.md file. Even a short one would be nice.
 class Game
 	attr_accessor :board
 
@@ -10,7 +10,7 @@ class Game
 		@p1 = Player.new("Player 1", "Black")
 		@p2 = Player.new("Player 2", "White")
 		@board = Board.new
-		@current_player = @p2
+		@current_player = @p2 # REV: Not sure why you did this. p1, p2 are more readable.
 		@enemy_player = @p1
 		game_loop
 	end
