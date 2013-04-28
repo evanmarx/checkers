@@ -9,18 +9,18 @@ class Game
 	attr_accessor :board
 
 	def initialize
-		@p1 = Player.new("Player 1", "Black")
-		@p2 = Player.new("Player 2", "White")
+		@p1 = Player.new("Player 1", "Black") #If this is the only place that p1 & p2
+		@p2 = Player.new("Player 2", "White") # are being used do they need to be instance variables?
 		@board = Board.new
-		@current_player = @p2
+		@current_player = @p2  
 		@enemy_player = @p1
 		game_loop
 	end
 
 	def game_loop
 		until win?
-			@current_player, @enemy_player = @enemy_player, @current_player
-			@board.display
+			@current_player, @enemy_player = @enemy_player, @current_player #I like it, it's cleaner than
+			@board.display							#and array with a switch
 			new_move = @current_player.move
 			until valid_move?(new_move)
 				new_move = @current_player.try_again
