@@ -10,7 +10,7 @@ class Board
 
 	def fill_board
 		#player 1
-		@grid[0][1] = Piece.new([0, 1])
+		@grid[0][1] = Piece.new([0, 1]) #Could be done in a loop
     	@grid[0][3] = Piece.new([0, 3])
     	@grid[0][5] = Piece.new([0, 5])
     	@grid[0][7] = Piece.new([0, 7])
